@@ -1,0 +1,272 @@
+\documentclass{exam}
+
+\input{ps-style.tex}
+
+%%% Uncomment if you are writing a draft
+% \toggledraft
+
+%%% Uncomment if you want to show your multiple choice answers
+\printanswers
+
+%%% Local document information
+\declarecommand{\docname}{Problem Set 3 Debrief}
+\declarecommand{\dueday}{Friday}
+\declarecommand{\duedate}{November 20, 2026}
+\declarecommand{\duetime}{23:59 ET}
+\declarecommand{\subname}{Due \dueday\,\duedate\,at\,\duetime}
+
+%%% Student information
+\declarecommand{\FirstStudentName}{}
+\declarecommand{\SecondStudentName}{}
+% sign the PDF after compiling
+
+%%% Custom math commands
+%% Standard
+\declarecommand{\ds}{\displaystyle} % force math styling
+\declarecommand{\emptyset}{\varnothing} % better empty set
+\declarecommand{\epsilon}{\varepsilon} % better epsilon
+\declarecommand{\R}{\mathbb{R}} % reals
+\declarecommand{\Z}{\mathbb{Z}} % integers
+\declarecommand{\Q}{\mathbb{Q}} % rationals
+\declarecommand{\N}{\mathbb{N}} % naturals
+\declarecommand{\C}{\mathbb{C}} % complex
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % absolue value
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % norm
+
+%% Linear algebra
+\declarecommand{\mat}[1]{\begin{bmatrix*}[r]#1\end{bmatrix*}}
+\declarecommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}} % matrix
+\DeclareMathOperator{\Span}{span} % span
+\DeclareMathOperator{\Img}{img} % image
+\DeclareMathOperator{\Ker}{ker} % kernel
+\DeclareMathOperator{\Id}{id} % identity map
+\DeclareMathOperator{\Range}{range} % range
+\DeclareMathOperator{\Rref}{rref} % row reduced echelon form
+\DeclareMathOperator{\Rank}{rank} % rank
+\DeclareMathOperator{\Null}{null} % null space
+\DeclareMathOperator{\Nullity}{nullity} % nullity
+\DeclareMathOperator{\Proj}{proj} % projection
+\DeclareMathOperator{\Dim}{dim} % dimension
+
+%% Topology
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Cl}{cl}
+
+%% Calculus
+\DeclareMathOperator{\Length}{length} % length
+\DeclareMathOperator{\Area}{area} % area
+\DeclareMathOperator{\Vol}{vol} % volume
+\DeclareMathOperator{\Grad}{grad} % gradient
+\DeclareMathOperator{\Curl}{curl} % curl
+\DeclareMathOperator{\Div}{div} % divergence
+
+\begin{document}
+
+\maketitle
+
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% COVER PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% HEADER BLOCK
+{\sffamily We,  the undersigned students, were present during the debrief and contributed to this write-up.}\\
+\setlength{\fboxrule}{0.8pt}
+\noindent\parbox[c][96pt][c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{
+	\vspace{2pt}
+	\makebox[0.6\textwidth]{\sffamily Student 1: {\color{ColorBase}\bfseries \FirstStudentName} \hrulefill } \,\,
+    \makebox[0.4\textwidth]{\sffamily Signature: \hrulefill}
+
+	\vspace{14pt}
+
+    \makebox[0.6\textwidth]{\sffamily Student 2: {\color{ColorBase}\bfseries \SecondStudentName} \hrulefill } \,\,
+    \makebox[0.4\textwidth]{\sffamily Signature: \hrulefill}
+
+	\vspace{16pt}
+
+	\makebox[0.95\textwidth]{\sffamily Which problem are you debriefing? Select ONE. \CorrectChoiceCircle
+	\hspace{10pt}
+    % Replace \chocie with \CorrectChoice for your preferred selection
+	\begin{oneparcheckboxes}
+		\choice{\bfseries Q1} \qquad 
+	    \choice {\bfseries Q2} \qquad
+	    \choice {\bfseries Q3} \qquad
+	\end{oneparcheckboxes} 
+		
+	}
+	\vspace{2pt}
+}
+
+\bigskip
+%%% HEADER BLOCK
+\setlength{\fboxrule}{1pt}
+
+
+
+\fbox{
+\begin{minipage}{\textwidth}
+\colorbox{ColorBase!20}{%
+	\parbox[l][30pt][l]{\dimexpr\textwidth-2\fboxsep}{
+	\centering \sffamily {\color{ColorBase}\bfseries\Large TA Debrief Feedback} \\ 
+	{\bfseries This box is only to be filled out by your TA.} } 
+}
+
+\bigskip
+\sffamily
+\begin{tabular}{ll}
+\prompt{1.}{Does the submission contain a detailed attempted solution?} & 
+\begin{oneparcheckboxes}
+	\choice Yes
+	\choice No	
+\end{oneparcheckboxes} \\
+\prompt{2.}{Did both students participate in the discussion?} & 
+\begin{oneparcheckboxes}
+	\choice Yes
+	\choice No	
+\end{oneparcheckboxes} \\
+\end{tabular}
+
+\bigskip
+\sffamily
+\begin{minipage}{0.2\textwidth}
+\begin{checkboxes}
+	\choice Brendan
+	\choice Dai
+\end{checkboxes}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{checkboxes}
+	\choice Henry
+	\choice Joshua
+\end{checkboxes}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{checkboxes}
+	\choice Nick
+	\choice Nikolas
+\end{checkboxes}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\begin{checkboxes}
+	\choice Ren\'{e}e S
+	\choice Renee W
+\end{checkboxes}
+\end{minipage}
+\bigskip 
+
+
+\bigskip 
+\makebox[0.95\textwidth]{TA Signature : \enspace{}\hrulefill}		
+	
+{\sffamily 
+\bigskip 
+\hspace*{-10pt}
+
+The feedback below does \textbf{not} affect your grade. The TA will give you the rubric during the debrief.\\ 
+
+\begin{tabular}{ll}
+\prompt{3.}{They verbally explained their  solution today.} & 
+\begin{oneparcheckboxes}
+	\choice Fully
+	\choice Partly
+	\choice Not this time
+\end{oneparcheckboxes} \\
+\prompt{4.}{The solution satisfies Rubric Item A (structure).} & 
+\begin{oneparcheckboxes}
+	\choice Fully
+	\choice Partly
+	\choice Not this time 
+\end{oneparcheckboxes} \\
+\prompt{5.}{The solution satisfies Rubric Item B (key idea).} & 
+\begin{oneparcheckboxes}
+	\choice Fully
+	\choice Partly
+	\choice Not this time 
+\end{oneparcheckboxes} \\
+\prompt{6.}{The solution satisfies Rubric Item C (writing).} & 
+\begin{oneparcheckboxes}
+	\choice Fully
+	\choice Partly
+	\choice Not this time
+\end{oneparcheckboxes} \\
+\end{tabular}
+}
+\end{minipage}
+}
+
+\bigskip 
+
+\prompt{IV.}{\textbf{After your debrief}, summarize at least one takeaway from the TA's feedback on your solution.}{}
+\begin{answer}{100pt}{1pt} % Do not change the height of this box
+    % Insert your answer here. Text should be purple.
+\end{answer}
+
+\vfill
+
+\pagebreak 
+%%% THREE PROMPTS
+\section*{Your discussion points}
+
+\textbf{Fill these in before your debrief.} Your TA may or may not use these points to guide discussion.
+
+\prompt{I.}{What was your first idea that did not work, and how did you know?}{}
+
+\begin{answer}{100pt}{1pt} % Do not change the height of this box
+    % Insert your answer here. Text should be purple.
+\end{answer}
+
+\bigskip
+\prompt{II.}{Pick one theorem you cited. State its hypotheses and point to the line where you checked each.}
+
+\begin{answer}{100pt}{1pt} % Do not change the height of this box
+    % Insert your answer here. Text should be purple.
+\end{answer}
+
+\bigskip
+
+\prompt{III.}{Select ONE question you could ask the TA.}
+
+\medskip
+\CorrectChoiceCircle
+% Replace \chocie with \CorrectChoice for your preferred selection
+\begin{checkboxes} \sffamily
+	\choice Does our argument have all the main ideas?
+	\choice Did we state everything precisely, e.g. variables, quantifiers, definitions?
+	\choice Does our argument have an easy-to-read logical flow?
+	\choice Do we use proper notation and terminology?
+	\choice Could we add more justification somewhere?  
+\end{checkboxes}
+
+\vfill
+
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% SOLUTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Your solution} 
+{
+Write a polished solution to your team's chosen question from page 1, including all parts. Mistakes welcome.
+\smallskip
+\vfill
+\begin{answer}{600pt}{0pt} % Do not change the height of this box
+    % Insert your answer here on page 3. Text should be purple.
+\end{answer}
+
+
+\pagebreak
+{\centering\footnotesize (Extra space provided for your solution. Leave blank if you don't need it.)}
+\begin{answer}{600pt}{0pt} % Do not change the height of this box
+    % Continue your answer here on page 4. Text should be purple.
+\end{answer}
+~
+
+\vfill
+\pagebreak
+{\centering\footnotesize (Extra space provided for your solution. Leave blank if you don't need it.)}
+\begin{answer}{600pt}{0pt} % Do not change the height of this box
+    % Continue your answer here on page 5. Text should be purple.
+\end{answer}
+~
+
+\end{document}

@@ -1,0 +1,242 @@
+
+%%% Declare commands whether new or old
+\newcommand{\declarecommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
+
+%------------------------------------------------------------------------
+%	COURSE INFORMATION
+%------------------------------------------------------------------------
+
+%%% Global document information
+\declarecommand{\university}{University of Toronto}
+\declarecommand{\coursename}{Multivariable Calculus with Proofs}
+\declarecommand{\coursecode}{MAT237}
+\declarecommand{\term}{2026-27}
+\declarecommand{\firstterm}{Fall 2026}
+\declarecommand{\secondterm}{Winter 2027}
+
+\declarecommand{\title}{\docname}
+\declarecommand{\subtitle}{\subname}
+\declarecommand{\author}{A. Qiu, S. Vasudevan, and A. Zaman}
+
+
+%%% URLs
+\declarecommand{\urlFAQ}{https://q.utoronto.ca/courses/455325/pages/policies-and-faq} % Quercus FAQ page
+\declarecommand{\urlGrading}{https://q.utoronto.ca/courses/455325/external_tools/26926} % Gradescope
+\declarecommand{\urlLMS}{https://q.utoronto.ca/courses/455325} % Quercus 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%		PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------------------
+%	FORMAT AND LAYOUT
+%------------------------------------------------------------------------
+\usepackage[24hr,iso]{datetime} % Required to write time of compilation
+\usepackage[margin=1in]{geometry} % Required for setting margins
+\parindent0pt % Set indentation to 0 pt
+\usepackage[english]{babel} % English language/hyphenation
+% exam class conflicts with fancyhdr package 
+
+\declarecommand{\toggledraft}{
+	\usepackage[firstpageonly=true]{draftwatermark}
+	\def\answerborderwidth{1pt}
+}
+
+%------------------------------------------------------------------------
+%	COLORS
+%------------------------------------------------------------------------
+\usepackage{xcolor} % required to defined colours
+	% Bright qualitative color scheme 
+	% Color-blind safe
+	% Retrieved 2023-08-27 from Paul Tol (https://personal.sron.nl/~pault/)
+	\definecolor{Blue}{HTML}{4477AA}
+	\definecolor{Cyan}{HTML}{66CCEE}
+	\definecolor{Green}{HTML}{228833}
+	\definecolor{Yellow}{HTML}{CCBB44}
+	\definecolor{Red}{HTML}{EE6677}
+	\definecolor{Purple}{HTML}{AA3377}
+	\definecolor{Gray}{HTML}{BBBBBB}
+	
+	\colorlet{ColorBase}{Purple}
+%------------------------------------------------------------------------
+%	FONTS
+%------------------------------------------------------------------------
+\usepackage[charter,cal=cmcal]{mathdesign} % Specify font for serif family
+\usepackage{avant} % Specify avant font for sans serif family
+\usepackage{mathtools} % Replaces amsmath
+\usepackage{sectsty} % Specify section formatting
+	\sectionfont{\sffamily\color{ColorBase}}
+	\subsectionfont{\sffamily\color{ColorBase!70}}
+	\subsubsectionfont{\small\sffamily}
+
+%------------------------------------------------------------------------
+%	TABLES, IMAGES, AND FIGURES
+%------------------------------------------------------------------------
+
+\usepackage{array} % Required for tables
+\usepackage{graphicx} % Required for including images
+	\graphicspath{{img/}} % Specifies the directory where pictures are stored
+\usepackage{tikz} % Required for creating plots
+	\usetikzlibrary{decorations.pathreplacing}
+\usepackage{tikz-3dplot} % Required for 3D plots
+\usepackage{tikz-cd} % Required for commutative diagrams
+\usepackage{pgfplots}
+	\pgfplotsset{compat=1.12}
+	\usepgfplotslibrary{colormaps}
+	\usepgfplotslibrary{patchplots}
+	\usepgfplotslibrary{fillbetween}
+
+%------------------------------------------------------------------------
+%	LINKS AND REFERENCES
+%------------------------------------------------------------------------
+
+\usepackage[hidelinks, urlcolor=Blue, linkcolor=black, colorlinks=true]{hyperref}   
+\usepackage[noabbrev,capitalise,nameinlink]{cleveref}
+
+%------------------------------------------------------------------------
+%	BOXES, CHOICES, AND LISTS
+%------------------------------------------------------------------------
+
+\usepackage{enumerate}
+\usepackage{enumitem} % Customize lists
+% \setlist{nolistsep} % Reduce spacing between bullet points and numbered lists
+
+\declarecommand{\thequestion}{\sffamily\bfseries Q{\arabic{question}}}
+\declarecommand{\partlabel}{(\arabic{question}\alph{partno})} % parts are labelled (1a)
+\declarecommand{\thepartno}{(\arabic{question}\alph{partno})}
+
+
+\usepackage{environ}
+%%% Answer environment makes a framed box of a chosen height
+\NewEnviron{answer}[2]{
+	\fullwidth{
+	\vspace*{-10pt}
+		\par\nobreak\vspace{\ht\strutbox}\noindent
+		\setlength{\fboxrule}{#2}
+		\fcolorbox{Gray}{white}{% 
+		\parbox[c][#1][t]{\dimexpr\linewidth-2\fboxsep}{
+		\hrule width \hsize height 0pt \color{ColorBase} 
+		\BODY
+		}%
+		}%
+	}
+}
+
+\CorrectChoiceEmphasis{\color{ColorBase}\sffamily\bfseries}	
+
+
+
+% Define remark environment
+\NewEnviron{remark}{
+	\fullwidth{
+	\vspace*{-10pt}
+		\color{Blue} \textbf{Remark:}  
+		\BODY
+	}
+}
+
+
+\declarecommand{\CorrectChoiceBox}{
+	\checkboxchar{$\Box$} 
+	\checkedchar{$\blacksquare$}
+}
+\declarecommand{\CorrectChoiceCircle}{
+	\checkboxchar{\tikz[baseline=-0.6ex]\draw[black,thick] (0,0) circle (1ex);}
+	\checkedchar{\tikz[baseline=-0.6ex]\draw[ColorBase,fill=ColorBase,thick] (0,0) circle (1ex);}
+}
+
+%------------------------------------------------------------------------
+%	HANDWRITING SPACE AND PROMPTS
+%------------------------------------------------------------------------
+
+%%% An empty ruled box of fixed height, for handwriting.
+%%% Regions are matched in Gradescope, so do not change a height
+%%% without re-matching the outline.
+\declarecommand{\ruledbox}[1]{%
+	\par\nobreak\noindent
+	\begingroup
+	\setlength{\fboxrule}{0.5pt}%
+	\setlength{\fboxsep}{6pt}%
+	\fcolorbox{Gray}{white}{%
+		\parbox[c][#1][t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{%
+			\rule{\linewidth}{0pt}% forces the box to full width; an empty parbox has zero width
+		}%
+	}%
+	\endgroup
+	\par
+}
+
+
+%%% A labelled pre-meeting prompt. Keep the box small on purpose:
+%%% a full page of prose here costs the TA the 60-second skim.
+\declarecommand{\prompt}[2]{%
+	\vspace{6pt}
+	\par\noindent{\bfseries\color{ColorBase} #1}~{#2}
+}
+
+%%% A labelled rule for handwritten fields.
+\declarecommand{\field}[2]{{\sffamily\small #1}~\raisebox{2pt}{\makebox[#2]{\hrulefill}}}
+
+
+%------------------------------------------------------------------------
+%	THEOREMS
+%------------------------------------------------------------------------
+
+\usepackage{amsthm}
+
+%%% Specify theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+
+%% Setup proof lines
+\NewEnviron{lines}{
+	\vspace*{-5pt}
+	\begin{center}
+	\fbox{\begin{minipage}{0.9\textwidth}
+	\begin{enumerate}[label=\arabic*.]
+		\it \BODY
+	\end{enumerate}
+	\end{minipage}
+	}
+	\end{center}
+}
+ 
+%------------------------------------------------------------------------
+%	HEADER & FOOTER
+%------------------------------------------------------------------------
+
+%%% Define footnote without marker
+\declarecommand{\blfootnote}[1]{%
+  \begingroup
+  \declarecommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%% Specify header and footer
+\pagestyle{headandfoot} 	\runningfootrule  
+	\runningfooter{\coursecode}{\docname\ - Page \the\numexpr\thepage\ of \numpages}{\term}
+
+%------------------------------------------------------------------------
+%	TITLE PAGE
+%------------------------------------------------------------------------
+
+
+%%%% Define fancy title
+\declarecommand{\maketitle}{
+\thispagestyle{empty} % Suppress headers and footers on the title page
+\vspace*{-85pt}
+\hspace*{-90pt}
+\begin{tikzpicture}[remember picture]
+\draw (8,-2) node [fill=ColorBase!20,fill opacity=0.8,text opacity=1,inner sep=15pt]{\Huge\centering\parbox[c][][t]{\paperwidth}{\centering\huge\color{ColorBase!60}\bfseries\sffamily\coursecode\, \coursename~\\\Huge\color{ColorBase}\title\\ % Title
+{\Large\color{black}\bfseries\sffamily\subtitle}}}; % Subtitle
+	\end{tikzpicture}
+	\vspace*{-10pt}
+	\blfootnote{Created by \author. Last updated \today \, at \currenttime.} 
+}
