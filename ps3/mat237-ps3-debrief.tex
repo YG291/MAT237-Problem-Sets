@@ -16,8 +16,8 @@
 \declarecommand{\subname}{Due \dueday\,\duedate\,at\,\duetime}
 
 %%% Student information
-\declarecommand{\FirstStudentName}{}
-\declarecommand{\SecondStudentName}{}
+\declarecommand{\FirstStudentName}{Sebastian Cooper-Giannotta}
+\declarecommand{\SecondStudentName}{Yueheng Guan}
 % sign the PDF after compiling
 
 %%% Custom math commands
@@ -90,7 +90,7 @@
 	\begin{oneparcheckboxes}
 		\choice{\bfseries Q1} \qquad 
 	    \choice {\bfseries Q2} \qquad
-	    \choice {\bfseries Q3} \qquad
+	    \CorrectChoice {\bfseries Q3} \qquad
 	\end{oneparcheckboxes} 
 		
 	}
@@ -265,7 +265,30 @@ Write a polished solution to your team's chosen question from page 1, including 
 \pagebreak
 {\centering\footnotesize (Extra space provided for your solution. Leave blank if you don't need it.)}
 \begin{answer}{600pt}{0pt} % Do not change the height of this box
-    % Continue your answer here on page 5. Text should be purple.
+    \textbf{(3c)}
+
+    \begin{proof}
+        \setlength{\parskip}{1em}
+
+        Let $S = \{(x, y) \in \R^k \times \R^{n - k} : y = F(x)\}$.
+
+        Since $S$ is the graph of $F$, and $F$ is $C^1$, we have by the tangent space of graphs theorem:
+        \[
+            T_pS = \{(h, dF_a(h)) : h \in \R^k\}
+        \]
+
+        Let $(x, y) \in \R^k \times \R^{n - k}$, then:
+        \begin{align*}
+            (x, y) \in \Ker(dG_p) & \iff (x, y) \in \Null(DG(p)) \\
+            & \iff DG(p) \mat{x \\ y} = \mat{-DF(a) & I_{n - k}} \mat{x \\ y} = 0 \\
+            & \iff -DF(a)x + I_{n - k}y = y - DF(a)x = 0 \\
+            & \iff y = DF(a)x = dF_a(x) \\
+            & \iff (x, y) = (x, dF_a(x)) \\
+            & \iff (x, y) \in T_pS
+        \end{align*}
+
+        Therefore $T_pS = \Ker(dG_p)$.
+    \end{proof}
 \end{answer}
 ~
 
