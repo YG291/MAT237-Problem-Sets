@@ -212,14 +212,17 @@ The feedback below does \textbf{not} affect your grade. The TA will give you the
 \prompt{I.}{What was your first idea that did not work, and how did you know?}{}
 
 \begin{answer}{100pt}{1pt} % Do not change the height of this box
-    % Insert your answer here. Text should be purple.
+    Our first idea for \textbf{(3a)} was to write $G$ as a linear combination of $H(y) = y$ and $F(x)$, and say that since they are $C^1$ functions, $G$ is too.
+    This did not work, because we quickly realized that to apply \textbf{Theorem 3.6.6}, we would need $H$ and $F$ to have the same domain as $G$.
 \end{answer}
 
 \bigskip
 \prompt{II.}{Pick one theorem you cited. State its hypotheses and point to the line where you checked each.}
 
 \begin{answer}{100pt}{1pt} % Do not change the height of this box
-    % Insert your answer here. Text should be purple.
+    One theorem we cited is \textbf{Theorem 4.5.11}.
+    Its hypotheses are that $S$ is the graph of a function $F : V \rightarrow \R^{n - k}$, $V$ is open, and $F$ is $C^1$.
+    These hypotheses were stated and checked in the same line where the theorem was cited and used.
 \end{answer}
 
 \bigskip
@@ -250,26 +253,23 @@ Write a polished solution to your team's chosen question from page 1, including 
 \smallskip
 \vfill
 \begin{answer}{600pt}{0pt} % Do not change the height of this box
-    % Insert your answer here on page 3. Text should be purple.
     \textbf{(3a)}
     \setlength{\parskip}{1em}
-    The idea is to show that $F$ is equivalent to a $C^1$ function.
+    The idea is to show that $G$ is equivalent to a $C^1$ function.
 
     first, take $\pi_1 : \mathbb{R}^k \times \mathbb{R}^{n-k} \to \mathbb{R}^k$ by $(x,y) \to x$ similarly for projection on $\pi_2$.
 
     Both $\pi_1$ and $\pi_2$ are linear and thus are $C^1$.
 
-    Then, noting that $F$ is $C^1$, by Corollary 4.1.5, we have that $F\circ \pi_1 : \mathbb{R}^k \times \mathbb{R}^{n-k} \to \mathbb{R}^k \to \mathbb{R}^{n-k}$ is also $C^1$.
+    Then, noting that $F$ is $C^1$, by \textbf{Corollary 4.1.5}, we have that $F\circ \pi_1 : \mathbb{R}^k \times \mathbb{R}^{n-k} \to \mathbb{R}^k \to \mathbb{R}^{n-k}$ is also $C^1$.
 
-    And, since $\pi_2$ is $C^1$, apply theorem 3.6.6 and we get that $\pi_2- F \circ \pi_1$ is $C^1$. Then by definition, $G$ which has the same domain/codomain and maps $(x, y)$ to the same values as this function, is $C^1$.
+    And, since $\pi_2$ is $C^1$, apply \textbf{Theorem 3.6.6} and we get that $\pi_2- F \circ \pi_1$ is $C^1$. Then by definition, $G$ which has the same domain/codomain and maps $(x, y)$ to the same values as this function, is $C^1$.
 \end{answer}
 
 
 \pagebreak
 {\centering\footnotesize (Extra space provided for your solution. Leave blank if you don't need it.)}
 \begin{answer}{600pt}{0pt} % Do not change the height of this box
-    % Continue your answer here on page 4. Text should be purple.
-
     \textbf{(3b)}
     \setlength{\parskip}{1em}
     $DG(p) = \mat{\partial_1G(p) & ... & \partial_nG(p)} = \mat{\frac{\partial G}{\partial x_1}(p) & ... & \frac{\partial G}{\partial x_k}(p) & \frac{\partial G}{\partial y_1}(p) & ... & \frac{\partial G}{\partial y_{n-k}}(p)}$
@@ -292,9 +292,9 @@ Write a polished solution to your team's chosen question from page 1, including 
 
         Let $S = \{(x, y) \in \R^k \times \R^{n - k} : y = F(x)\}$.
 
-        Since $S$ is the graph of $F$, and $F$ is $C^1$, we have by \textbf{Theorem 4.5.11} (tangent space of graphs):
+        Since $S$ is the graph of $F$, $F$ has domain $R^k$ which is open, and $F$ is $C^1$, we have by \textbf{Theorem 4.5.11} (tangent space of graphs):
         \[
-            T_pS = \{(h, dF_a(h)) : h \in \R^k\}
+            T_pS = \{(w, dF_a(w)) : w \in \R^k\}
         \]
 
         Let $(x, y) \in \R^k \times \R^{n - k}$, then:
